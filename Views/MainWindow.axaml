@@ -6,6 +6,7 @@
         x:Name="ShellWindow"
         x:DataType="vm:MainViewModel"
         Title="智能定价工作台"
+        Icon="/Assets/avalonia-logo.ico"
         Width="1240"
         Height="760"
         MinWidth="920"
