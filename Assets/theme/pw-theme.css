@@ -2,17 +2,17 @@
 /* Class names are opt-in. This file does not reset html, body, or existing page rules. */
 
 :root {
-  --pw-page-bg: #F5F7FA;
+  --pw-page-bg: #F3F6FA;
   --pw-surface: #FFFFFF;
-  --pw-surface-secondary: #F8FAFC;
+  --pw-surface-secondary: #F8FAFD;
   --pw-text-primary: #1F2937;
   --pw-text-secondary: #64748B;
   --pw-text-muted: #94A3B8;
-  --pw-primary: #0082FB;
+  --pw-primary: #087FF5;
   --pw-primary-hover: #006FE0;
-  --pw-primary-pressed: #0063CC;
-  --pw-primary-soft: #EAF3FF;
-  --pw-border: #E5EAF1;
+  --pw-primary-pressed: #005FC4;
+  --pw-primary-soft: #E8F2FF;
+  --pw-border: #DFE6EF;
   --pw-success: #16A36A;
   --pw-warning: #D97706;
   --pw-danger: #DC4C4C;
@@ -31,15 +31,15 @@
   --pw-font-xs: 12px;
   --pw-font-sm: 13px;
   --pw-font-md: 14px;
-  --pw-font-section: 16px;
-  --pw-font-title: 20px;
-  --pw-font-large: 22px;
+  --pw-font-section: 15px;
+  --pw-font-title: 18px;
+  --pw-font-large: 20px;
 
-  --pw-control-sm: 28px;
-  --pw-control-md: 32px;
-  --pw-control-lg: 36px;
+  --pw-control-sm: 26px;
+  --pw-control-md: 30px;
+  --pw-control-lg: 34px;
 
-  --pw-font-family: Inter, "Microsoft YaHei UI", "Segoe UI", sans-serif;
+  --pw-font-family: Inter, "Microsoft YaHei UI", "Microsoft YaHei", "Segoe UI", sans-serif;
 }
 
 .pw-btn {
@@ -55,7 +55,7 @@
   color: var(--pw-text-primary);
   font-family: var(--pw-font-family);
   font-size: var(--pw-font-sm);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.2;
   cursor: pointer;
 }
@@ -132,11 +132,11 @@
 }
 
 .pw-btn-danger:hover {
-  background: #FDECEC;
+  background: #F1E8E8;
 }
 
 .pw-btn-danger:active {
-  background: #F8D4D4;
+  background: #E7D6D6;
 }
 
 .pw-btn-danger:focus-visible {
@@ -246,19 +246,19 @@
 }
 
 .pw-status-success {
-  background: #E8F6F0;
+  background: #E6EFEA;
   border-color: var(--pw-success);
   color: var(--pw-success);
 }
 
 .pw-status-warning {
-  background: #FDF4E8;
+  background: #EFE9DF;
   border-color: var(--pw-warning);
   color: var(--pw-warning);
 }
 
 .pw-status-danger {
-  background: #FDECEC;
+  background: #F1E8E8;
   border-color: var(--pw-danger);
   color: var(--pw-danger);
 }

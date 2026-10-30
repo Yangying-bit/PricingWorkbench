@@ -9,7 +9,7 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="{DynamicResource PwRadiusMediumCorner}" />
         <Setter Property="MinHeight" Value="{DynamicResource PwControlHeightNormal}" />
-        <Setter Property="Padding" Value="12,0" />
+        <Setter Property="Padding" Value="11,0" />
         <Setter Property="FontFamily" Value="{DynamicResource PwFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource PwFontSizeBody}" />
     </Style>
@@ -23,7 +23,7 @@
     </Style>
     <Style Selector="Button.pwPrimary:focus">
         <Setter Property="BorderBrush" Value="{DynamicResource PwPrimaryPressedBrush}" />
-        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="BorderThickness" Value="1" />
     </Style>
     <Style Selector="Button.pwPrimary:disabled">
         <Setter Property="Opacity" Value="0.45" />
@@ -36,7 +36,7 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="{DynamicResource PwRadiusMediumCorner}" />
         <Setter Property="MinHeight" Value="{DynamicResource PwControlHeightNormal}" />
-        <Setter Property="Padding" Value="12,0" />
+        <Setter Property="Padding" Value="11,0" />
         <Setter Property="FontFamily" Value="{DynamicResource PwFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource PwFontSizeBody}" />
     </Style>
@@ -49,7 +49,7 @@
     </Style>
     <Style Selector="Button.pwSecondary:focus">
         <Setter Property="BorderBrush" Value="{DynamicResource PwPrimaryBrush}" />
-        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="BorderThickness" Value="1" />
     </Style>
     <Style Selector="Button.pwSecondary:disabled">
         <Setter Property="Opacity" Value="0.45" />
@@ -86,7 +86,7 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="{DynamicResource PwRadiusMediumCorner}" />
         <Setter Property="MinHeight" Value="{DynamicResource PwControlHeightNormal}" />
-        <Setter Property="Padding" Value="12,0" />
+        <Setter Property="Padding" Value="11,0" />
         <Setter Property="FontFamily" Value="{DynamicResource PwFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource PwFontSizeBody}" />
     </Style>
@@ -97,7 +97,7 @@
         <Setter Property="Background" Value="#F8D4D4" />
     </Style>
     <Style Selector="Button.pwDanger:focus">
-        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="BorderThickness" Value="1" />
     </Style>
     <Style Selector="Button.pwDanger:disabled">
         <Setter Property="Opacity" Value="0.45" />

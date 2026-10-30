@@ -20,11 +20,32 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        Opened += OnOpened;
         WorkbenchWebView.EnvironmentRequested += OnWebViewEnvironmentRequested;
         _archiveBridge = new ArchiveBridge(WorkbenchWebView);
         DataContextChanged += OnDataContextChanged;
         BindArchiveHost();
         LoadWorkbench();
+    }
+
+    private void OnOpened(object? sender, EventArgs e)
+    {
+        FitInitialSizeToWorkingArea();
+    }
+
+    private void FitInitialSizeToWorkingArea()
+    {
+        var screen = Screens.ScreenFromWindow(this) ?? Screens.Primary;
+        if (screen is null)
+        {
+            return;
+        }
+
+        var scale = Math.Max(screen.Scaling, 1);
+        var maxWidth = Math.Max(MinWidth, screen.WorkingArea.Width / scale - 32);
+        var maxHeight = Math.Max(MinHeight, screen.WorkingArea.Height / scale - 48);
+        Width = Math.Min(Width, maxWidth);
+        Height = Math.Min(Height, maxHeight);
     }
 
     private static void OnWebViewEnvironmentRequested(object? sender, WebViewEnvironmentRequestedEventArgs e)
@@ -57,6 +78,20 @@ public partial class MainWindow : Window
         viewModel.PropertyChanged += OnViewModelPropertyChanged;
         _archiveHostBound = true;
         UpdateWorkspaceHost(viewModel);
+        _ = RefreshArchivesWhenReadyAsync(viewModel);
+    }
+
+    private async Task RefreshArchivesWhenReadyAsync(MainViewModel viewModel)
+    {
+        try
+        {
+            await _archiveBridge.WaitUntilReadyAsync(TimeSpan.FromSeconds(20));
+            await viewModel.Archives.RefreshCommand.ExecuteAsync(null);
+        }
+        catch (Exception)
+        {
+            // Home recent-projects are best-effort and use the existing archives refresh path.
+        }
     }
 
     private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)

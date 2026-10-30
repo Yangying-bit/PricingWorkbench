@@ -1,14 +1,14 @@
-; PricingWorkbench 0.1.0 installer
+; PricingWorkbench 0.3.0 installer
 ; Fixed AppId for all future upgrades:
 ; {1D6ABCF4-5EF9-446E-9A13-01458E13AE25}
 
 #define MyAppName "智能定价工作台"
-#define MyAppVersion "0.1.0"
+#define MyAppVersion "0.3.0"
 #define MyAppPublisher "PricingWorkbench"
 #define MyAppExeName "PricingWorkbench.Desktop.exe"
 #define MyAppDirName "PricingWorkbench"
 #define MyAppId "{{1D6ABCF4-5EF9-446E-9A13-01458E13AE25}"
-#define MyOutputBaseFilename "PricingWorkbench-0.1.0-Setup"
+#define MyOutputBaseFilename "PricingWorkbench-0.3.0-Setup"
 
 [Setup]
 AppId={#MyAppId}
@@ -33,8 +33,8 @@ UsePreviousAppDir=yes
 UsePreviousGroup=yes
 CloseApplications=yes
 ChangesAssociations=no
-VersionInfoVersion=0.1.0.0
-VersionInfoProductVersion=0.1.0
+VersionInfoVersion=0.3.0.0
+VersionInfoProductVersion=0.3.0
 
 [Languages]
 Name: "chinesesimp"; MessagesFile: "compiler:Default.isl"

@@ -3,17 +3,17 @@
     <!-- Design tokens shared with Assets/theme/pw-theme.css. Values must stay identical. -->
 
     <!-- Page and surface colors. -->
-    <Color x:Key="PwPageBackgroundColor">#F5F7FA</Color>
+    <Color x:Key="PwPageBackgroundColor">#F3F6FA</Color>
     <Color x:Key="PwSurfaceColor">#FFFFFF</Color>
-    <Color x:Key="PwSurfaceSecondaryColor">#F8FAFC</Color>
+    <Color x:Key="PwSurfaceSecondaryColor">#F8FAFD</Color>
     <Color x:Key="PwTextPrimaryColor">#1F2937</Color>
     <Color x:Key="PwTextSecondaryColor">#64748B</Color>
     <Color x:Key="PwTextMutedColor">#94A3B8</Color>
-    <Color x:Key="PwPrimaryColor">#0082FB</Color>
+    <Color x:Key="PwPrimaryColor">#087FF5</Color>
     <Color x:Key="PwPrimaryHoverColor">#006FE0</Color>
-    <Color x:Key="PwPrimaryPressedColor">#0063CC</Color>
-    <Color x:Key="PwPrimarySoftColor">#EAF3FF</Color>
-    <Color x:Key="PwBorderColor">#E5EAF1</Color>
+    <Color x:Key="PwPrimaryPressedColor">#005FC4</Color>
+    <Color x:Key="PwPrimarySoftColor">#E8F2FF</Color>
+    <Color x:Key="PwBorderColor">#DFE6EF</Color>
     <Color x:Key="PwSuccessColor">#16A36A</Color>
     <Color x:Key="PwWarningColor">#D97706</Color>
     <Color x:Key="PwDangerColor">#DC4C4C</Color>
@@ -59,13 +59,13 @@
     <x:Double x:Key="PwFontSizeSmall">12</x:Double>
     <x:Double x:Key="PwFontSizeBody">13</x:Double>
     <x:Double x:Key="PwFontSizeBodyLarge">14</x:Double>
-    <x:Double x:Key="PwFontSizeSection">16</x:Double>
-    <x:Double x:Key="PwFontSizePageTitle">20</x:Double>
-    <x:Double x:Key="PwFontSizeHero">22</x:Double>
-    <FontFamily x:Key="PwFontFamily">Inter, Microsoft YaHei UI, Segoe UI</FontFamily>
+    <x:Double x:Key="PwFontSizeSection">15</x:Double>
+    <x:Double x:Key="PwFontSizePageTitle">18</x:Double>
+    <x:Double x:Key="PwFontSizeHero">20</x:Double>
+    <FontFamily x:Key="PwFontFamily">Inter, Microsoft YaHei UI, Microsoft YaHei, Segoe UI, sans-serif</FontFamily>
 
     <!-- Opt-in control heights. Compact Fluent templates stay unchanged until a class is applied. -->
-    <x:Double x:Key="PwControlHeightSmall">28</x:Double>
-    <x:Double x:Key="PwControlHeightNormal">32</x:Double>
-    <x:Double x:Key="PwControlHeightLarge">36</x:Double>
+    <x:Double x:Key="PwControlHeightSmall">26</x:Double>
+    <x:Double x:Key="PwControlHeightNormal">30</x:Double>
+    <x:Double x:Key="PwControlHeightLarge">34</x:Double>
 </ResourceDictionary>

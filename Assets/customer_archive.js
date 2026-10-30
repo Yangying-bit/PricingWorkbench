@@ -9,6 +9,24 @@
   var STORE_SET = "settings";
   var ROOT_ID = "pwCustomerRoot";
 
+  /* ============ 可配置模板文案（客户档案/月报） ============
+     可在这里集中调整月报标题、章节名、说明文案。
+     也可通过 window.__pwCustomerTemplateConfig 覆盖默认值。 */
+  var CUSTOMER_TEMPLATE = Object.assign({
+    reportTitleSuffix: "寄件健康与业务洞察月报",
+    reportMetaFormat: "统计月份：{month} · 数据文件：{fileName}",
+    emptySuggestionText: "当前数据未触发任何已配置的建议阈值。",
+    reportPrivacyNote: "本报告数字全部由本次导入数据生成。不含寄件地址、电话或快递员等明细。",
+    sectionTitles: {
+      core: "01 月度核心经营指标",
+      health: "02 客户寄递健康诊断",
+      weight: "03 重量结构分析",
+      city: "04 同城业务分析",
+      brand: "05 快递品牌取件表现",
+      summary: "06 综合评估与业务建议"
+    }
+  }, window.__pwCustomerTemplateConfig || {});
+
   var BRAND_MAP = {
     shentong: "申通", yuantong: "圆通", debangkuaidi: "德邦快递", jtexpress: "极兔",
     yunda: "韵达", ems: "EMS", jd: "京东", kuayue: "跨越", shunfeng: "顺丰",
@@ -45,6 +63,11 @@
   function pct(n, d) { if (!d) return 0; return Math.round((n * 1000) / d) / 10; }
   function fmtPct(n, d) { return pct(n, d).toFixed(1) + "%"; }
   function fmtN(n) { return Number(n || 0).toLocaleString("zh-CN"); }
+  function tpl(format, data) {
+    return String(format || "").replace(/\{(\w+)\}/g, function (_, key) {
+      return data && data[key] != null ? String(data[key]) : "";
+    });
+  }
 
   function openCaDb() {
     return new Promise(function (res, rej) {
@@ -409,35 +432,35 @@
     var st = document.createElement("style");
     st.id = "pwCustomerCss";
     st.textContent = [
-      ".pw-customer-root{position:fixed;inset:0;z-index:40;overflow:auto;background:var(--pw-page-bg,#F5F7FA);color:var(--pw-text-primary,#1F2937);font-family:var(--pw-font-family,Inter,'Microsoft YaHei UI','Segoe UI',sans-serif);}",
-      ".pw-ca{max-width:1180px;margin:0 auto;padding:24px 16px 32px;}",
-      ".pw-ca h1{font-size:22px;margin:0 0 8px;font-weight:700;}",
+      ".pw-customer-root{position:fixed;inset:0;z-index:40;overflow:auto;background:var(--pw-page-bg,#F3F6FA);color:var(--pw-text-primary,#1F2937);font-family:var(--pw-font-family,Inter,'Microsoft YaHei UI','Microsoft YaHei','Segoe UI',sans-serif);}",
+      ".pw-ca{max-width:1280px;margin:0 auto;padding:18px 22px 28px;}",
+      ".pw-ca h1{font-size:20px;margin:0 0 6px;font-weight:700;}",
       ".pw-muted{color:var(--pw-text-secondary,#64748B);font-size:13px;}",
       ".pw-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0;}",
       ".pw-card{background:var(--pw-surface,#fff);border:1px solid var(--pw-border,#E5EAF1);border-radius:var(--pw-radius-lg,8px);padding:16px;margin:8px 0;box-shadow:none;}",
       ".pw-btn{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;min-height:var(--pw-control-md,32px);padding:0 12px;border:1px solid transparent;border-radius:var(--pw-radius-md,6px);background:transparent;color:var(--pw-text-primary,#1F2937);font-size:13px;font-weight:600;line-height:1.2;cursor:pointer;}",
       ".pw-btn:disabled{opacity:.45;cursor:default;}",
-      ".pw-btn-p{background:var(--pw-primary,#0082FB);border-color:var(--pw-primary,#0082FB);color:#fff;}",
+      ".pw-btn-p{background:var(--pw-primary,#087FF5);border-color:var(--pw-primary,#087FF5);color:#fff;}",
       ".pw-btn-p:hover{background:var(--pw-primary-hover,#006FE0);border-color:var(--pw-primary-hover,#006FE0);}",
       ".pw-btn-l{background:var(--pw-surface,#fff);color:var(--pw-text-primary,#1F2937);border:1px solid var(--pw-border,#E5EAF1);}",
-      ".pw-btn-l:hover{background:var(--pw-surface-secondary,#F8FAFC);border-color:var(--pw-primary,#0082FB);}",
+      ".pw-btn-l:hover{background:var(--pw-surface-secondary,#F8FAFD);border-color:var(--pw-primary,#087FF5);}",
       ".pw-btn-d{background:var(--pw-surface,#fff);color:var(--pw-danger,#DC4C4C);border:1px solid var(--pw-danger,#DC4C4C);}",
       ".pw-btn-d:hover{background:#FDECEC;}",
       ".pw-input,.pw-select{box-sizing:border-box;min-height:var(--pw-control-md,32px);padding:0 8px;border:1px solid var(--pw-border,#E5EAF1);border-radius:var(--pw-radius-md,6px);min-width:180px;background:var(--pw-surface,#fff);color:var(--pw-text-primary,#1F2937);font-size:13px;font-family:inherit;}",
-      ".pw-input:focus,.pw-select:focus{border-color:var(--pw-primary,#0082FB);outline:none;}",
+      ".pw-input:focus,.pw-select:focus{border-color:var(--pw-primary,#087FF5);outline:none;}",
       ".pw-table{width:100%;border-collapse:collapse;background:var(--pw-surface,#fff);color:var(--pw-text-primary,#1F2937);font-size:13px;font-variant-numeric:tabular-nums;}",
       ".pw-table th{background:var(--pw-surface-secondary,#F8FAFC);color:var(--pw-text-secondary,#64748B);padding:8px;font-size:12px;font-weight:600;text-align:left;border-bottom:1px solid var(--pw-border,#E5EAF1);}",
       ".pw-table td{padding:8px;border-bottom:1px solid var(--pw-border,#E5EAF1);}",
       ".pw-kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;}",
       ".pw-metric{background:var(--pw-surface-secondary,#F8FAFC);border:1px solid var(--pw-border,#E5EAF1);border-radius:var(--pw-radius-lg,8px);padding:12px;text-align:center;}",
-      ".pw-metric b{display:block;font-size:22px;margin-top:4px;font-variant-numeric:tabular-nums;}",
+      ".pw-metric b{display:block;font-size:20px;margin-top:4px;font-variant-numeric:tabular-nums;}",
       ".pw-toast{position:fixed;right:24px;bottom:24px;background:var(--pw-text-primary,#1F2937);color:#fff;padding:8px 12px;border-radius:var(--pw-radius-md,6px);z-index:60;}",
       ".pw-hidden{display:none !important;}",
       ".pw-tag{display:inline-block;padding:2px 8px;border-radius:var(--pw-radius-sm,4px);font-size:12px;font-weight:600;}",
       ".pw-ok{background:#E8F6F0;color:var(--pw-success,#16A36A);}.pw-warn{background:#FDF4E8;color:var(--pw-warning,#D97706);}.pw-bad{background:#FDECEC;color:var(--pw-danger,#DC4C4C);}",
-      ".pw-report .header{background:var(--pw-primary,#0082FB);color:#fff;border-radius:var(--pw-radius-lg,8px);padding:24px;text-align:center;margin-bottom:16px;}",
+      ".pw-report .header{background:var(--pw-primary,#087FF5);color:#fff;border-radius:var(--pw-radius-lg,8px);padding:20px;text-align:center;margin-bottom:14px;}",
       ".pw-bar{height:8px;background:var(--pw-surface-secondary,#F8FAFC);border:1px solid var(--pw-border,#E5EAF1);border-radius:var(--pw-radius-sm,4px);overflow:hidden;}",
-      ".pw-bar>i{display:block;height:100%;background:var(--pw-primary,#0082FB);}",
+      ".pw-bar>i{display:block;height:100%;background:var(--pw-primary,#087FF5);}",
       ".pw-chart{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}",
       ".pw-legend{font-size:12px;color:var(--pw-text-secondary,#64748B);}"
     ].join("");
@@ -624,44 +647,49 @@
   }
   function bars(items) {
     return items.map(function (x) {
-      return '<div style="margin:8px 0;"><div class="pw-muted">' + esc(x.name) + " " + x.value + (x.suffix || "") + "</div><div class=\"pw-bar\"><i style=\"width:" + Math.max(2, x.pct) + '%;background:' + (x.color || "#0082FB") + ';"></i></div></div>';
+      return '<div style="margin:8px 0;"><div class="pw-muted">' + esc(x.name) + " " + x.value + (x.suffix || "") + "</div><div class=\"pw-bar\"><i style=\"width:" + Math.max(2, x.pct) + '%;background:' + (x.color || "#087FF5") + ';"></i></div></div>';
     }).join("");
   }
 
   function reportHtml(r, c, standalone, themeCss) {
     var s = r.stats, w = r.weights, city = r.city, th = r.thresholdsUsed || defaultSettings();
     var name = (c && c.name) || r.customerNameInFile || "客户";
+    var st = CUSTOMER_TEMPLATE.sectionTitles || {};
+    var reportMeta = tpl(CUSTOMER_TEMPLATE.reportMetaFormat, {
+      month: r.month || "",
+      fileName: r.fileName || ""
+    });
     var pickupTxt = pickupLabel(s.successRate, th);
     var findings = (r.suggestions || []).map(function (x, i) {
       return '<div class="pw-card"><b>' + (i + 1) + ". " + esc(x.title) + "</b><p class=\"pw-muted\">" + esc(x.body) + "</p></div>";
-    }).join("") || '<div class="pw-card pw-muted">当前数据未触发任何已配置的建议阈值。</div>';
+    }).join("") || ('<div class="pw-card pw-muted">' + esc(CUSTOMER_TEMPLATE.emptySuggestionText || "") + "</div>");
     var brandRows = (r.brands || []).map(function (b) {
       var tag = b.smallSample ? '<span class="pw-tag pw-warn">小样本</span>' : (b.successRate >= th.pickupGood ? '<span class="pw-tag pw-ok">达良好阈值</span>' : (b.successRate < th.pickupWarn ? '<span class="pw-tag pw-bad">低于关注阈值</span>' : '<span class="pw-tag pw-warn">关注</span>'));
       return "<tr><td>" + esc(b.name) + "</td><td>" + b.orders + "</td><td>" + b.success + "</td><td>" + b.successRate.toFixed(1) + "%</td><td>" + tag + "</td></tr>";
     }).join("");
     var starP = stars(s.successRate, th.starCuts);
-    var html = '<div class="header"><h1>' + esc(name) + " · 寄件健康与业务洞察月报</h1><p>统计月份：" + esc(r.month) + " · 数据文件：" + esc(r.fileName || "") + "</p></div>" +
-      '<div class="pw-card"><div class="pw-muted">01 月度核心经营指标</div><div class="pw-kpi">' +
+    var html = '<div class="header"><h1>' + esc(name) + " · " + esc(CUSTOMER_TEMPLATE.reportTitleSuffix || "") + "</h1><p>" + esc(reportMeta) + "</p></div>" +
+      '<div class="pw-card"><div class="pw-muted">' + esc(st.core || "") + '</div><div class="pw-kpi">' +
       metric("订单总量", fmtN(s.total)) + metric("取件成功量", fmtN(s.success)) + metric("取件成功率", s.successRate.toFixed(1) + "%") + metric("取消量 / 取消率", fmtN(s.cancel) + " / " + s.cancelRate.toFixed(1) + "%") + "</div>" +
       '<p class="pw-muted">取件成功按是否结算=是统计。分母均为订单总量 ' + fmtN(s.total) + "。</p></div>" +
-      '<div class="pw-card"><div class="pw-muted">02 客户寄递健康诊断</div><div class="pw-kpi">' +
+      '<div class="pw-card"><div class="pw-muted">' + esc(st.health || "") + '</div><div class="pw-kpi">' +
       metric("取件表现", s.successRate.toFixed(1) + "%") + metric("大件订单占比", s.bulkyRate.toFixed(1) + "%") + metric("同城订单占比", s.sameCityRate.toFixed(1) + "%") + metric("地址解析覆盖率", (r.quality && r.quality.addressCoverage != null ? r.quality.addressCoverage.toFixed(1) : "100.0") + "%") + "</div>" +
       "<p>" + esc(pickupTxt) + "。大件阈值 " + th.bulkyRecommendPct + "%，同城阈值 " + th.sameCityRecommendPct + "%。</p>" + findings + "</div>" +
-      '<div class="pw-card"><div class="pw-muted">03 重量结构分析</div><div class="pw-kpi">' +
+      '<div class="pw-card"><div class="pw-muted">' + esc(st.weight || "") + '</div><div class="pw-kpi">' +
       metric("0-5kg", w.b05 + " / " + fmtPct(w.b05, s.total)) + metric("5-15kg", w.b515 + " / " + fmtPct(w.b515, s.total)) + metric("15-30kg", w.b1530 + " / " + fmtPct(w.b1530, s.total)) + metric("30kg以上", w.b30 + " / " + fmtPct(w.b30, s.total)) + "</div>" +
       "<p>15kg以上 " + w.over15 + " 单，占比 " + s.bulkyRate.toFixed(1) + "%；30kg以上 " + w.over30 + " 单。分档合计 " + (w.b05 + w.b515 + w.b1530 + w.b30) + "。</p>" +
-      donut([{ name: "0-5kg", value: w.b05, color: "#0082FB" }, { name: "5-15kg", value: w.b515, color: "#94A3B8" }, { name: "15-30kg", value: w.b1530, color: "#D97706" }, { name: "30kg以上", value: w.b30, color: "#DC4C4C" }]) + "</div>" +
-      '<div class="pw-card"><div class="pw-muted">04 同城业务分析</div><div class="pw-kpi">' +
+      donut([{ name: "0-5kg", value: w.b05, color: "#087FF5" }, { name: "5-15kg", value: w.b515, color: "#94A3B8" }, { name: "15-30kg", value: w.b1530, color: "#D97706" }, { name: "30kg以上", value: w.b30, color: "#DC4C4C" }]) + "</div>" +
+      '<div class="pw-card"><div class="pw-muted">' + esc(st.city || "") + '</div><div class="pw-kpi">' +
       metric("同城轻件", city.sameLight + " / " + fmtPct(city.sameLight, s.total)) + metric("同城重件", city.sameHeavy + " / " + fmtPct(city.sameHeavy, s.total)) + metric("同城总量", city.sameTotal + " / " + fmtPct(city.sameTotal, s.total)) + metric("跨城订单", city.cross + " / " + fmtPct(city.cross, s.total)) + "</div>" +
       (city.unknown ? '<p class="pw-muted">地址未知 ' + city.unknown + " 单不计入同城/跨城，但仍计入总订单。</p>" : "") +
-      donut([{ name: "跨城常规件", value: city.cross, color: "#94A3B8" }, { name: "同城轻件", value: city.sameLight, color: "#0082FB" }, { name: "同城重件", value: city.sameHeavy, color: "#D97706" }]) + "</div>" +
-      '<div class="pw-card"><div class="pw-muted">05 快递品牌取件表现</div><table class="pw-table"><thead><tr><th>品牌</th><th>订单量</th><th>成功量</th><th>成功率</th><th></th></tr></thead><tbody>' + brandRows + "</tbody></table>" +
+      donut([{ name: "跨城常规件", value: city.cross, color: "#94A3B8" }, { name: "同城轻件", value: city.sameLight, color: "#087FF5" }, { name: "同城重件", value: city.sameHeavy, color: "#D97706" }]) + "</div>" +
+      '<div class="pw-card"><div class="pw-muted">' + esc(st.brand || "") + '</div><table class="pw-table"><thead><tr><th>品牌</th><th>订单量</th><th>成功量</th><th>成功率</th><th></th></tr></thead><tbody>' + brandRows + "</tbody></table>" +
       bars((r.brands || []).map(function (b) { return { name: b.name + " 成功率", value: b.successRate.toFixed(1) + "%", pct: b.successRate, color: b.successRate < th.pickupWarn ? "#DC4C4C" : "#16A36A" }; })) +
       "<p class=\"pw-muted\">各品牌订单量合计 " + (r.brands || []).reduce(function (a, b) { return a + b.orders; }, 0) + "。</p></div>" +
-      '<div class="pw-card"><div class="pw-muted">06 综合评估与业务建议</div><p>取件率星级 ' + starText(starP) + "（按阈值 " + (th.starCuts || []).join("/") + " 计算）。</p>" + findings +
-      '<p class="pw-muted">本报告数字全部由本次导入数据生成。不含寄件地址、电话或快递员等明细。</p></div>';
+      '<div class="pw-card"><div class="pw-muted">' + esc(st.summary || "") + '</div><p>取件率星级 ' + starText(starP) + "（按阈值 " + (th.starCuts || []).join("/") + " 计算）。</p>" + findings +
+      '<p class="pw-muted">' + esc(CUSTOMER_TEMPLATE.reportPrivacyNote || "") + "</p></div>";
     if (standalone) {
-      return "<!DOCTYPE html><html lang=\"zh-CN\"><head><meta charset=\"UTF-8\"/><title>" + esc(name) + "月报 " + esc(r.month) + "</title><style>" + (themeCss || "") + ($("#pwCustomerCss") ? $("#pwCustomerCss").textContent : "") + "body{margin:0;padding:16px;background:var(--pw-page-bg,#F5F7FA);}</style></head><body class=\"pw-report pw-ca\">" + html + "</body></html>";
+      return "<!DOCTYPE html><html lang=\"zh-CN\"><head><meta charset=\"UTF-8\"/><title>" + esc(name) + "月报 " + esc(r.month) + "</title><style>" + (themeCss || "") + ($("#pwCustomerCss") ? $("#pwCustomerCss").textContent : "") + "body{margin:0;padding:16px;background:var(--pw-page-bg,#F3F6FA);}</style></head><body class=\"pw-report pw-ca\">" + html + "</body></html>";
     }
     return html;
   }

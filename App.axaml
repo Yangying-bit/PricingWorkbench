@@ -3,7 +3,7 @@
              x:Class="PricingWorkbench.Desktop.App"
              xmlns:local="using:PricingWorkbench.Desktop"
              RequestedThemeVariant="Light">
-    <!-- Light palette keeps the shell on the shared #0082FB accent. Compact Fluent templates stay intact. -->
+    <!-- Light palette keeps the shell on the shared low-saturation accent. Compact Fluent templates stay intact. -->
 
     <Application.DataTemplates>
         <local:ViewLocator />
@@ -20,8 +20,8 @@
     <Application.Styles>
         <FluentTheme DensityStyle="Compact">
             <FluentTheme.Palettes>
-                <ColorPaletteResources x:Key="Light" Accent="#0082FB" />
-                <ColorPaletteResources x:Key="Dark" Accent="#0082FB" />
+                <ColorPaletteResources x:Key="Light" Accent="#087FF5" />
+                <ColorPaletteResources x:Key="Dark" Accent="#087FF5" />
             </FluentTheme.Palettes>
         </FluentTheme>
         <StyleInclude Source="avares://PricingWorkbench.Desktop/Styles/Controls.axaml" />
