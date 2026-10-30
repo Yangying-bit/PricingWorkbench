@@ -1,0 +1,7 @@
+<!-- 将下面 ItemGroup 合并到 PricingWorkbench.Desktop.csproj 的 <Project> 内部。若已有同名 None 项，请编辑已有项，不要重复添加。 -->
+<ItemGroup>
+  <None Update="Assets\pricing_workbench.html">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+  </None>
+</ItemGroup>

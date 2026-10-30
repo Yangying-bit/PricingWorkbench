@@ -1,0 +1,68 @@
+# Build outputs
+bin/
+obj/
+artifacts/
+publish/
+release/
+
+# IDE and local tooling
+.vs/
+.idea/
+*.user
+*.suo
+*.ncrunch*
+*.cache
+
+# Backups and temporary copies
+backup-*/
+backup*/
+*.bak
+*.tmp
+*.temp
+*.orig
+*~
+
+# Logs and diagnostics
+*.log
+logs/
+
+# Local runtime data (do not commit machine-specific data)
+WebView2UserData/
+webview2-user-data/
+userdata/
+cache/
+tmp/
+temp/
+
+# Local databases and caches
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+*.mdb
+*.ldb
+
+# Sensitive config or credentials
+.env
+.env.*
+secrets.json
+*.pfx
+*.pem
+*.key
+
+# Local customer/business exports (keep source code and required assets)
+*月报*.html
+*月报*.xlsx
+*订单*.xlsx
+*报价*.xlsx
+*对账*.xlsx
+*成本*.xlsx
+*经营数据*.xlsx
+*客户*.csv
+*客户*.xlsx
+
+# Installer and package outputs
+*.msi
+*.zip
+*.7z

@@ -1,0 +1,29 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="PricingWorkbench.Desktop.App"
+             xmlns:local="using:PricingWorkbench.Desktop"
+             RequestedThemeVariant="Light">
+    <!-- Light palette keeps the shell on the shared #0082FB accent. Compact Fluent templates stay intact. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator />
+    </Application.DataTemplates>
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://PricingWorkbench.Desktop/Styles/Tokens.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+
+    <Application.Styles>
+        <FluentTheme DensityStyle="Compact">
+            <FluentTheme.Palettes>
+                <ColorPaletteResources x:Key="Light" Accent="#0082FB" />
+                <ColorPaletteResources x:Key="Dark" Accent="#0082FB" />
+            </FluentTheme.Palettes>
+        </FluentTheme>
+        <StyleInclude Source="avares://PricingWorkbench.Desktop/Styles/Controls.axaml" />
+    </Application.Styles>
+</Application>

@@ -1,0 +1,331 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:PricingWorkbench.Desktop.ViewModels"
+        xmlns:models="using:PricingWorkbench.Desktop.Models"
+        x:Class="PricingWorkbench.Desktop.Views.MainWindow"
+        x:Name="ShellWindow"
+        x:DataType="vm:MainViewModel"
+        Title="智能定价工作台"
+        Width="1480"
+        Height="960"
+        MinWidth="1100"
+        MinHeight="720"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource PwPageBackgroundBrush}"
+        FontFamily="{DynamicResource PwFontFamily}"
+        FontSize="{DynamicResource PwFontSizeBody}">
+    <Window.Styles>
+        <Style Selector="Button.nav">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="CornerRadius" Value="{DynamicResource PwRadiusMediumCorner}" />
+            <Setter Property="Padding" Value="12,8" />
+            <Setter Property="Margin" Value="8,2" />
+            <Setter Property="MinHeight" Value="{DynamicResource PwControlHeightNormal}" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="Foreground" Value="{DynamicResource PwTextSecondaryBrush}" />
+            <Setter Property="FontSize" Value="{DynamicResource PwFontSizeBody}" />
+        </Style>
+        <Style Selector="Button.nav:pointerover">
+            <Setter Property="Background" Value="{DynamicResource PwSurfaceBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource PwTextPrimaryBrush}" />
+        </Style>
+        <Style Selector="Button.nav:pressed">
+            <Setter Property="Background" Value="{DynamicResource PwPrimarySoftBrush}" />
+        </Style>
+        <Style Selector="Button.nav.selected">
+            <Setter Property="Background" Value="{DynamicResource PwPrimarySoftBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource PwPrimaryBrush}" />
+        </Style>
+        <Style Selector="Button.nav.selected:pointerover">
+            <Setter Property="Background" Value="{DynamicResource PwPrimarySoftBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource PwPrimaryBrush}" />
+        </Style>
+        <Style Selector="Button.nav:disabled">
+            <Setter Property="Opacity" Value="0.45" />
+        </Style>
+        <Style Selector="Border.pageCard">
+            <Setter Property="Background" Value="{DynamicResource PwSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource PwBorderBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="{DynamicResource PwRadiusLargeCorner}" />
+            <Setter Property="Padding" Value="16" />
+        </Style>
+        <Style Selector="TextBlock.pageDescription">
+            <Setter Property="Foreground" Value="{DynamicResource PwTextSecondaryBrush}" />
+            <Setter Property="FontSize" Value="{DynamicResource PwFontSizeBody}" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+        <Style Selector="TextBlock.sectionTitle">
+            <Setter Property="Foreground" Value="{DynamicResource PwTextPrimaryBrush}" />
+            <Setter Property="FontSize" Value="{DynamicResource PwFontSizeSection}" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+    </Window.Styles>
+
+    <Grid ColumnDefinitions="232,*" RowDefinitions="*">
+        <Border Grid.Column="0"
+                Background="{DynamicResource PwSurfaceSecondaryBrush}"
+                BorderBrush="{DynamicResource PwBorderBrush}"
+                BorderThickness="0,0,1,0">
+            <Grid RowDefinitions="Auto,*,Auto">
+                <StackPanel Margin="16,24,12,16" Spacing="4">
+                    <TextBlock Classes="sectionTitle" Text="智能定价工作台" />
+                    <TextBlock Classes="pageDescription" FontSize="12" Text="PricingWorkbench" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Spacing="2">
+                    <Button Classes="nav" Classes.selected="{Binding IsHomeVisible}" Command="{Binding NavigateHomeCommand}">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <PathIcon Width="18" Height="18" Data="M10,20V14H14V20H19V12H22L12,3L2,12H5V20Z" />
+                            <TextBlock VerticalAlignment="Center" Text="首页" />
+                        </StackPanel>
+                    </Button>
+                    <Button Classes="nav" Classes.selected="{Binding IsWorkspaceVisible}" Command="{Binding NavigateWorkspaceCommand}">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <PathIcon Width="18" Height="18" Data="M4,4H20V16H4ZM6,6V14H18V6ZM8,18H16V20H8Z" />
+                            <TextBlock VerticalAlignment="Center" Text="报价工作台" />
+                        </StackPanel>
+                    </Button>
+                    <Button Classes="nav" Classes.selected="{Binding IsArchivesVisible}" Command="{Binding NavigateArchivesCommand}">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <PathIcon Width="18" Height="18" Data="M4,3H14L20,9V21H4ZM6,5V19H18V10H13V5ZM8,12H16V14H8ZM8,16H14V18H8Z" />
+                            <TextBlock VerticalAlignment="Center" Text="项目档案" />
+                        </StackPanel>
+                    </Button>
+                    <Button Classes="nav" Classes.selected="{Binding IsCustomersVisible}" Command="{Binding NavigateCustomersCommand}">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <PathIcon Width="18" Height="18" Data="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+                            <TextBlock VerticalAlignment="Center" Text="客户档案" />
+                        </StackPanel>
+                    </Button>
+                    <Button Classes="nav" Classes.selected="{Binding IsSettingsVisible}" Command="{Binding NavigateSettingsCommand}">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <PathIcon Width="18" Height="18" Data="M12,8A4,4 0 1,0 12,16A4,4 0 1,0 12,8M3,13V11L5.05,10.5C5.25,9.8 5.5,9.15 5.9,8.55L4.8,6.75L6.25,5.3L8.05,6.4C8.65,6 9.3,5.75 10,5.55L10.5,3H13.5L14,5.55C14.7,5.75 15.35,6 15.95,6.4L17.75,5.3L19.2,6.75L18.1,8.55C18.5,9.15 18.75,9.8 18.95,10.5L21,11V13L18.95,13.5C18.75,14.2 18.5,14.85 18.1,15.45L19.2,17.25L17.75,18.7L15.95,17.6C15.35,18 14.7,18.25 14,18.45L13.5,21H10.5L10,18.45C9.3,18.25 8.65,18 8.05,17.6L6.25,18.7L4.8,17.25L5.9,15.45C5.5,14.85 5.25,14.2 5.05,13.5Z" />
+                            <TextBlock VerticalAlignment="Center" Text="设置" />
+                        </StackPanel>
+                    </Button>
+                    <Button Classes="nav" Classes.selected="{Binding IsAboutVisible}" Command="{Binding NavigateAboutCommand}">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <PathIcon Width="18" Height="18" Data="M11,17H13V11H11M12,2A10,10 0 1,0 12,22A10,10 0 0,0 12,2M12,20A8,8 0 1,1 12,4A8,8 0 0,1 12,20M11,9H13V7H11Z" />
+                            <TextBlock VerticalAlignment="Center" Text="关于软件" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+                <TextBlock Grid.Row="2"
+                           Margin="20,12,12,20"
+                           Classes="pageDescription"
+                           FontSize="12"
+                           Text="版本 0.3.0（开发中）" />
+            </Grid>
+        </Border>
+
+        <Grid Grid.Column="1" RowDefinitions="64,*">
+            <Border Grid.Row="0"
+                    Background="{DynamicResource PwSurfaceBrush}"
+                    BorderBrush="{DynamicResource PwBorderBrush}"
+                    BorderThickness="0,0,0,1"
+                    Padding="32,0">
+                <TextBlock VerticalAlignment="Center"
+                           FontSize="20"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource PwTextPrimaryBrush}"
+                           Text="{Binding CurrentPageTitle}" />
+            </Border>
+
+            <Grid Grid.Row="1">
+                <ScrollViewer IsVisible="{Binding IsHomeVisible}"
+                              Padding="32"
+                              ZIndex="1"
+                              Background="{DynamicResource PwPageBackgroundBrush}">
+                    <StackPanel MaxWidth="880" Spacing="24">
+                        <TextBlock Classes="pageDescription"
+                                   Text="离线处理报价数据，保留已验证的标准化、线路约束与毛利测算能力。" />
+
+                        <Border Classes="pageCard">
+                            <StackPanel Spacing="16">
+                                <TextBlock FontSize="20" FontWeight="SemiBold" Text="开始处理报价" />
+                                <TextBlock Classes="pageDescription"
+                                           Text="进入报价工作台后，可导入 Excel 或 CSV 并继续当前会话中的处理工作。" />
+                                <StackPanel Orientation="Horizontal" Spacing="12">
+                                    <Button Classes="pwPrimary"
+                                            Command="{Binding NavigateWorkspaceCommand}"
+                                            Content="开始新的报价处理" />
+                                    <Button Classes="pwSecondary"
+                                            Command="{Binding NavigateWorkspaceCommand}"
+                                            Content="进入报价工作台" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Classes="pageCard">
+                            <StackPanel Spacing="8">
+                                <TextBlock Classes="sectionTitle" Text="最近项目" />
+                                <TextBlock Classes="pageDescription"
+                                           Text="最近项目来自 IndexedDB 真实档案。请打开「项目档案」查看、搜索和打开已保存记录，此处不展示演示数据。" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <Grid x:Name="WorkspaceHost"
+                      ZIndex="0"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Top"
+                      IsHitTestVisible="{Binding IsWebViewExpanded}">
+                    <NativeWebView x:Name="WorkbenchWebView" />
+                </Grid>
+
+                <Grid ZIndex="1"
+                      IsVisible="{Binding IsArchivesVisible}"
+                      Background="{DynamicResource PwPageBackgroundBrush}">
+                    <DockPanel Margin="32,24">
+                        <StackPanel DockPanel.Dock="Top" Spacing="12">
+                            <TextBlock Classes="pageDescription"
+                                       Text="档案来自现有 IndexedDB quote_std_db / records。打开后恢复已保存的工作表结果和线路规则，不会重新计算报价。" />
+                            <WrapPanel>
+                                <TextBox Classes="pwField"
+                                         Width="280"
+                                         PlaceholderText="按档案名称搜索"
+                                         Text="{Binding Archives.SearchText}" />
+                                <ComboBox Classes="pwField"
+                                          Margin="8,0,0,0"
+                                          Width="140"
+                                          SelectedIndex="{Binding Archives.SortIndex}">
+                                    <ComboBoxItem Content="最新优先" />
+                                    <ComboBoxItem Content="最早优先" />
+                                </ComboBox>
+                                <Button Classes="pwSecondary"
+                                        Margin="8,0,0,0"
+                                        Command="{Binding Archives.RefreshCommand}"
+                                        Content="刷新" />
+                                <Button Classes="pwSecondary"
+                                        Margin="8,0,0,0"
+                                        Command="{Binding Archives.BackupAllCommand}"
+                                        Content="备份全部" />
+                                <Button Classes="pwSecondary"
+                                        Margin="8,0,0,0"
+                                        Command="{Binding Archives.RestoreBackupCommand}"
+                                        Content="恢复备份" />
+                            </WrapPanel>
+                            <TextBlock Classes="pageDescription" Text="{Binding Archives.StatusText}" />
+                            <TextBlock Classes="pageDescription"
+                                       IsVisible="{Binding Archives.HasError}"
+                                       Text="{Binding Archives.ErrorMessage}" />
+                        </StackPanel>
+
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Classes="pageDescription"
+                                       IsVisible="{Binding Archives.IsLoading}"
+                                       Text="正在读取真实档案…" />
+                            <TextBlock HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Classes="pageDescription"
+                                       IsVisible="{Binding Archives.ShowEmptyState}"
+                                       Text="暂无存档记录。" />
+                            <ListBox Background="Transparent"
+                                     BorderThickness="0"
+                                     ItemsSource="{Binding Archives.VisibleItems}"
+                                     SelectedItem="{Binding Archives.SelectedArchive}"
+                                     IsVisible="{Binding Archives.HasItems}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate x:DataType="models:ArchiveSummary">
+                                        <Border Classes="pageCard" Margin="0,0,0,10" Padding="16,14">
+                                            <Grid ColumnDefinitions="*,Auto">
+                                                <StackPanel Spacing="4">
+                                                    <TextBlock Classes="sectionTitle" Text="{Binding DisplayName}" />
+                                                    <TextBlock Classes="pageDescription" Text="{Binding MetaText}" />
+                                                    <TextBlock Classes="pageDescription" Text="{Binding StdVersion}" />
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="1"
+                                                            Orientation="Horizontal"
+                                                            Spacing="8"
+                                                            VerticalAlignment="Center">
+                                                    <Button Classes="pwPrimary"
+                                                            Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).Archives.OpenArchiveCommand}"
+                                                            CommandParameter="{Binding}"
+                                                            Content="打开" />
+                                                    <Button Classes="pwSecondary"
+                                                            Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).Archives.ExportOneCommand}"
+                                                            CommandParameter="{Binding}"
+                                                            Content="导出" />
+                                                    <Button Classes="pwDanger"
+                                                            Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).Archives.DeleteArchiveCommand}"
+                                                            CommandParameter="{Binding}"
+                                                            Content="删除" />
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
+                    </DockPanel>
+
+                    <Border Background="#661F2937"
+                            IsVisible="{Binding Archives.IsConfirmVisible}">
+                        <Border Classes="pageCard"
+                                Width="460"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                            <StackPanel Spacing="16">
+                                <TextBlock Classes="sectionTitle" Text="{Binding Archives.ConfirmTitle}" />
+                                <TextBlock Classes="pageDescription" Text="{Binding Archives.ConfirmMessage}" />
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
+                                    <Button Classes="pwSecondary"
+                                            Command="{Binding Archives.ConfirmNoCommand}"
+                                            Content="取消" />
+                                    <Button Classes="pwPrimary"
+                                            Command="{Binding Archives.ConfirmYesCommand}"
+                                            Content="确定" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </Border>
+                </Grid>
+
+                <ScrollViewer IsVisible="{Binding IsSettingsVisible}"
+                              Padding="32"
+                              ZIndex="1"
+                              Background="{DynamicResource PwPageBackgroundBrush}">
+                    <Border Classes="pageCard" MaxWidth="760">
+                        <StackPanel Spacing="12">
+                            <TextBlock FontSize="20" FontWeight="SemiBold" Text="设置" />
+                            <TextBlock Classes="pageDescription"
+                                       Text="原生设置将独立保存到 settings.json，不会写入或覆盖 WebView2 的 IndexedDB 目录。" />
+                            <TextBlock Classes="pageDescription" Text="此阶段尚未启用主题、密度、导出目录和自动备份选项，避免出现没有实际作用的开关。" />
+                            <SelectableTextBlock Classes="pageDescription" Text="{Binding SettingsFilePath}" />
+                        </StackPanel>
+                    </Border>
+                </ScrollViewer>
+
+                <ScrollViewer IsVisible="{Binding IsAboutVisible}"
+                              Padding="32"
+                              ZIndex="1"
+                              Background="{DynamicResource PwPageBackgroundBrush}">
+                    <StackPanel MaxWidth="760" Spacing="16">
+                        <Border Classes="pageCard">
+                            <StackPanel Spacing="8">
+                                <TextBlock FontSize="20" FontWeight="SemiBold" Text="智能定价工作台" />
+                                <TextBlock Classes="pageDescription" Text="PricingWorkbench · 版本 0.3.0（开发中）" />
+                                <TextBlock Classes="pageDescription"
+                                           Text="Avalonia 原生桌面外壳与保持长期存活的 WebView2 报价工作台。" />
+                            </StackPanel>
+                        </Border>
+                        <Border Classes="pageCard">
+                            <StackPanel Spacing="8">
+                                <TextBlock Classes="sectionTitle" Text="用户数据" />
+                                <TextBlock Classes="pageDescription"
+                                           Text="以下目录保存 WebView2 配置与现有 IndexedDB 报价档案；切换原生页面不会重置或迁移该目录。" />
+                                <SelectableTextBlock Classes="pageDescription" Text="{Binding UserDataFolder}" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

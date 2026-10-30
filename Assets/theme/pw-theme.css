@@ -1,0 +1,270 @@
+/* PricingWorkbench design tokens. Keep values identical to Styles/Tokens.axaml. */
+/* Class names are opt-in. This file does not reset html, body, or existing page rules. */
+
+:root {
+  --pw-page-bg: #F5F7FA;
+  --pw-surface: #FFFFFF;
+  --pw-surface-secondary: #F8FAFC;
+  --pw-text-primary: #1F2937;
+  --pw-text-secondary: #64748B;
+  --pw-text-muted: #94A3B8;
+  --pw-primary: #0082FB;
+  --pw-primary-hover: #006FE0;
+  --pw-primary-pressed: #0063CC;
+  --pw-primary-soft: #EAF3FF;
+  --pw-border: #E5EAF1;
+  --pw-success: #16A36A;
+  --pw-warning: #D97706;
+  --pw-danger: #DC4C4C;
+
+  --pw-radius-sm: 4px;
+  --pw-radius-md: 6px;
+  --pw-radius-lg: 8px;
+
+  --pw-space-1: 4px;
+  --pw-space-2: 8px;
+  --pw-space-3: 12px;
+  --pw-space-4: 16px;
+  --pw-space-6: 24px;
+  --pw-space-8: 32px;
+
+  --pw-font-xs: 12px;
+  --pw-font-sm: 13px;
+  --pw-font-md: 14px;
+  --pw-font-section: 16px;
+  --pw-font-title: 20px;
+  --pw-font-large: 22px;
+
+  --pw-control-sm: 28px;
+  --pw-control-md: 32px;
+  --pw-control-lg: 36px;
+
+  --pw-font-family: Inter, "Microsoft YaHei UI", "Segoe UI", sans-serif;
+}
+
+.pw-btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--pw-control-md);
+  padding: 0 var(--pw-space-3);
+  border: 1px solid transparent;
+  border-radius: var(--pw-radius-md);
+  background: transparent;
+  color: var(--pw-text-primary);
+  font-family: var(--pw-font-family);
+  font-size: var(--pw-font-sm);
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.pw-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.pw-btn-primary {
+  background: var(--pw-primary);
+  border-color: var(--pw-primary);
+  color: var(--pw-surface);
+}
+
+.pw-btn-primary:hover {
+  background: var(--pw-primary-hover);
+  border-color: var(--pw-primary-hover);
+}
+
+.pw-btn-primary:active {
+  background: var(--pw-primary-pressed);
+  border-color: var(--pw-primary-pressed);
+}
+
+.pw-btn-primary:focus-visible {
+  outline: 2px solid var(--pw-primary-pressed);
+  outline-offset: 1px;
+}
+
+.pw-btn-secondary {
+  background: var(--pw-surface);
+  border-color: var(--pw-border);
+  color: var(--pw-text-primary);
+}
+
+.pw-btn-secondary:hover {
+  background: var(--pw-surface-secondary);
+  border-color: var(--pw-primary);
+}
+
+.pw-btn-secondary:active {
+  background: var(--pw-primary-soft);
+}
+
+.pw-btn-secondary:focus-visible {
+  outline: 2px solid var(--pw-primary);
+  outline-offset: 1px;
+}
+
+.pw-btn-text {
+  background: transparent;
+  border-color: transparent;
+  color: var(--pw-primary);
+}
+
+.pw-btn-text:hover {
+  background: var(--pw-primary-soft);
+}
+
+.pw-btn-text:active {
+  color: var(--pw-primary-pressed);
+}
+
+.pw-btn-text:focus-visible {
+  outline: 1px solid var(--pw-primary);
+  outline-offset: 1px;
+}
+
+.pw-btn-danger {
+  background: var(--pw-surface);
+  border-color: var(--pw-danger);
+  color: var(--pw-danger);
+}
+
+.pw-btn-danger:hover {
+  background: #FDECEC;
+}
+
+.pw-btn-danger:active {
+  background: #F8D4D4;
+}
+
+.pw-btn-danger:focus-visible {
+  outline: 2px solid var(--pw-danger);
+  outline-offset: 1px;
+}
+
+.pw-input,
+.pw-select {
+  box-sizing: border-box;
+  min-height: var(--pw-control-md);
+  padding: 0 var(--pw-space-2);
+  border: 1px solid var(--pw-border);
+  border-radius: var(--pw-radius-md);
+  background: var(--pw-surface);
+  color: var(--pw-text-primary);
+  font-family: var(--pw-font-family);
+  font-size: var(--pw-font-sm);
+}
+
+.pw-input::placeholder {
+  color: var(--pw-text-muted);
+}
+
+.pw-input:hover,
+.pw-select:hover {
+  border-color: var(--pw-text-muted);
+}
+
+.pw-input:focus,
+.pw-select:focus {
+  border-color: var(--pw-primary);
+  outline: none;
+}
+
+.pw-input:disabled,
+.pw-select:disabled {
+  opacity: 0.55;
+}
+
+.pw-page {
+  background: var(--pw-page-bg);
+  color: var(--pw-text-primary);
+  font-family: var(--pw-font-family);
+  font-size: var(--pw-font-sm);
+}
+
+.pw-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pw-space-3);
+  margin-bottom: var(--pw-space-4);
+}
+
+.pw-section {
+  margin-bottom: var(--pw-space-4);
+}
+
+.pw-panel {
+  background: var(--pw-surface);
+  border: 1px solid var(--pw-border);
+  border-radius: var(--pw-radius-lg);
+  padding: var(--pw-space-4);
+}
+
+.pw-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--pw-surface);
+  color: var(--pw-text-primary);
+  font-size: var(--pw-font-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.pw-table-header {
+  background: var(--pw-surface-secondary);
+  color: var(--pw-text-secondary);
+  font-size: var(--pw-font-xs);
+  font-weight: 600;
+  text-align: left;
+  padding: var(--pw-space-2);
+  border-bottom: 1px solid var(--pw-border);
+}
+
+.pw-table-row td {
+  padding: var(--pw-space-2);
+  border-bottom: 1px solid var(--pw-border);
+}
+
+.pw-table-row:hover td {
+  background: var(--pw-surface-secondary);
+}
+
+.pw-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  padding: 0 var(--pw-space-2);
+  border: 1px solid var(--pw-border);
+  border-radius: var(--pw-radius-sm);
+  background: var(--pw-surface-secondary);
+  color: var(--pw-text-secondary);
+  font-size: var(--pw-font-xs);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.pw-status-success {
+  background: #E8F6F0;
+  border-color: var(--pw-success);
+  color: var(--pw-success);
+}
+
+.pw-status-warning {
+  background: #FDF4E8;
+  border-color: var(--pw-warning);
+  color: var(--pw-warning);
+}
+
+.pw-status-danger {
+  background: #FDECEC;
+  border-color: var(--pw-danger);
+  color: var(--pw-danger);
+}
+
+.pw-status-pending {
+  background: var(--pw-primary-soft);
+  border-color: var(--pw-primary);
+  color: var(--pw-primary);
+}

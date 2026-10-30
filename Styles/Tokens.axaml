@@ -1,0 +1,71 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Design tokens shared with Assets/theme/pw-theme.css. Values must stay identical. -->
+
+    <!-- Page and surface colors. -->
+    <Color x:Key="PwPageBackgroundColor">#F5F7FA</Color>
+    <Color x:Key="PwSurfaceColor">#FFFFFF</Color>
+    <Color x:Key="PwSurfaceSecondaryColor">#F8FAFC</Color>
+    <Color x:Key="PwTextPrimaryColor">#1F2937</Color>
+    <Color x:Key="PwTextSecondaryColor">#64748B</Color>
+    <Color x:Key="PwTextMutedColor">#94A3B8</Color>
+    <Color x:Key="PwPrimaryColor">#0082FB</Color>
+    <Color x:Key="PwPrimaryHoverColor">#006FE0</Color>
+    <Color x:Key="PwPrimaryPressedColor">#0063CC</Color>
+    <Color x:Key="PwPrimarySoftColor">#EAF3FF</Color>
+    <Color x:Key="PwBorderColor">#E5EAF1</Color>
+    <Color x:Key="PwSuccessColor">#16A36A</Color>
+    <Color x:Key="PwWarningColor">#D97706</Color>
+    <Color x:Key="PwDangerColor">#DC4C4C</Color>
+
+    <SolidColorBrush x:Key="PwPageBackgroundBrush" Color="{StaticResource PwPageBackgroundColor}" />
+    <SolidColorBrush x:Key="PwSurfaceBrush" Color="{StaticResource PwSurfaceColor}" />
+    <SolidColorBrush x:Key="PwSurfaceSecondaryBrush" Color="{StaticResource PwSurfaceSecondaryColor}" />
+    <SolidColorBrush x:Key="PwTextPrimaryBrush" Color="{StaticResource PwTextPrimaryColor}" />
+    <SolidColorBrush x:Key="PwTextSecondaryBrush" Color="{StaticResource PwTextSecondaryColor}" />
+    <SolidColorBrush x:Key="PwTextMutedBrush" Color="{StaticResource PwTextMutedColor}" />
+    <SolidColorBrush x:Key="PwPrimaryBrush" Color="{StaticResource PwPrimaryColor}" />
+    <SolidColorBrush x:Key="PwPrimaryHoverBrush" Color="{StaticResource PwPrimaryHoverColor}" />
+    <SolidColorBrush x:Key="PwPrimaryPressedBrush" Color="{StaticResource PwPrimaryPressedColor}" />
+    <SolidColorBrush x:Key="PwPrimarySoftBrush" Color="{StaticResource PwPrimarySoftColor}" />
+    <SolidColorBrush x:Key="PwBorderBrush" Color="{StaticResource PwBorderColor}" />
+    <SolidColorBrush x:Key="PwSuccessBrush" Color="{StaticResource PwSuccessColor}" />
+    <SolidColorBrush x:Key="PwWarningBrush" Color="{StaticResource PwWarningColor}" />
+    <SolidColorBrush x:Key="PwDangerBrush" Color="{StaticResource PwDangerColor}" />
+
+    <!-- Corner radius: small controls 4, regular controls 6, content regions 8. -->
+    <x:Double x:Key="PwRadiusSmall">4</x:Double>
+    <x:Double x:Key="PwRadiusMedium">6</x:Double>
+    <x:Double x:Key="PwRadiusLarge">8</x:Double>
+    <CornerRadius x:Key="PwRadiusSmallCorner">4</CornerRadius>
+    <CornerRadius x:Key="PwRadiusMediumCorner">6</CornerRadius>
+    <CornerRadius x:Key="PwRadiusLargeCorner">8</CornerRadius>
+
+    <!-- Spacing scale. -->
+    <x:Double x:Key="PwSpacing4">4</x:Double>
+    <x:Double x:Key="PwSpacing8">8</x:Double>
+    <x:Double x:Key="PwSpacing12">12</x:Double>
+    <x:Double x:Key="PwSpacing16">16</x:Double>
+    <x:Double x:Key="PwSpacing24">24</x:Double>
+    <x:Double x:Key="PwSpacing32">32</x:Double>
+    <Thickness x:Key="PwSpacing4Thickness">4</Thickness>
+    <Thickness x:Key="PwSpacing8Thickness">8</Thickness>
+    <Thickness x:Key="PwSpacing12Thickness">12</Thickness>
+    <Thickness x:Key="PwSpacing16Thickness">16</Thickness>
+    <Thickness x:Key="PwSpacing24Thickness">24</Thickness>
+    <Thickness x:Key="PwSpacing32Thickness">32</Thickness>
+
+    <!-- Type scale. Body stays 13-14; page titles stay 20-22. -->
+    <x:Double x:Key="PwFontSizeSmall">12</x:Double>
+    <x:Double x:Key="PwFontSizeBody">13</x:Double>
+    <x:Double x:Key="PwFontSizeBodyLarge">14</x:Double>
+    <x:Double x:Key="PwFontSizeSection">16</x:Double>
+    <x:Double x:Key="PwFontSizePageTitle">20</x:Double>
+    <x:Double x:Key="PwFontSizeHero">22</x:Double>
+    <FontFamily x:Key="PwFontFamily">Inter, Microsoft YaHei UI, Segoe UI</FontFamily>
+
+    <!-- Opt-in control heights. Compact Fluent templates stay unchanged until a class is applied. -->
+    <x:Double x:Key="PwControlHeightSmall">28</x:Double>
+    <x:Double x:Key="PwControlHeightNormal">32</x:Double>
+    <x:Double x:Key="PwControlHeightLarge">36</x:Double>
+</ResourceDictionary>

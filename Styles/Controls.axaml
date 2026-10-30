@@ -1,0 +1,186 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Opt-in control classes. Unclassed Fluent controls keep their existing templates and behavior. -->
+
+    <Style Selector="Button.pwPrimary">
+        <Setter Property="Background" Value="{DynamicResource PwPrimaryBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PwSurfaceBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PwPrimaryBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{DynamicResource PwRadiusMediumCorner}" />
+        <Setter Property="MinHeight" Value="{DynamicResource PwControlHeightNormal}" />
+        <Setter Property="Padding" Value="12,0" />
+        <Setter Property="FontFamily" Value="{DynamicResource PwFontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource PwFontSizeBody}" />
+    </Style>
+    <Style Selector="Button.pwPrimary:pointerover">
+        <Setter Property="Background" Value="{DynamicResource PwPrimaryHoverBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PwPrimaryHoverBrush}" />
+    </Style>
+    <Style Selector="Button.pwPrimary:pressed">
+        <Setter Property="Background" Value="{DynamicResource PwPrimaryPressedBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PwPrimaryPressedBrush}" />
+    </Style>
+    <Style Selector="Button.pwPrimary:focus">
+        <Setter Property="BorderBrush" Value="{DynamicResource PwPrimaryPressedBrush}" />
+        <Setter Property="BorderThickness" Value="2" />
+    </Style>
+    <Style Selector="Button.pwPrimary:disabled">
+        <Setter Property="Opacity" Value="0.45" />
+    </Style>
+
+    <Style Selector="Button.pwSecondary">
+        <Setter Property="Background" Value="{DynamicResource PwSurfaceBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PwTextPrimaryBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PwBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{DynamicResource PwRadiusMediumCorner}" />
+        <Setter Property="MinHeight" Value="{DynamicResource PwControlHeightNormal}" />
+        <Setter Property="Padding" Value="12,0" />
+        <Setter Property="FontFamily" Value="{DynamicResource PwFontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource PwFontSizeBody}" />
+    </Style>
+    <Style Selector="Button.pwSecondary:pointerover">
+        <Setter Property="Background" Value="{DynamicResource PwSurfaceSecondaryBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PwPrimaryBrush}" />
+    </Style>
+    <Style Selector="Button.pwSecondary:pressed">
+        <Setter Property="Background" Value="{DynamicResource PwPrimarySoftBrush}" />
+    </Style>
+    <Style Selector="Button.pwSecondary:focus">
+        <Setter Property="BorderBrush" Value="{DynamicResource PwPrimaryBrush}" />
+        <Setter Property="BorderThickness" Value="2" />
+    </Style>
+    <Style Selector="Button.pwSecondary:disabled">
+        <Setter Property="Opacity" Value="0.45" />
+    </Style>
+
+    <Style Selector="Button.pwText">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource PwPrimaryBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="CornerRadius" Value="{DynamicResource PwRadiusMediumCorner}" />
+        <Setter Property="MinHeight" Value="{DynamicResource PwControlHeightNormal}" />
+        <Setter Property="Padding" Value="8,0" />
+        <Setter Property="FontFamily" Value="{DynamicResource PwFontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource PwFontSizeBody}" />
+    </Style>
+    <Style Selector="Button.pwText:pointerover">
+        <Setter Property="Background" Value="{DynamicResource PwPrimarySoftBrush}" />
+    </Style>
+    <Style Selector="Button.pwText:pressed">
+        <Setter Property="Foreground" Value="{DynamicResource PwPrimaryPressedBrush}" />
+    </Style>
+    <Style Selector="Button.pwText:focus">
+        <Setter Property="BorderBrush" Value="{DynamicResource PwPrimaryBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+    <Style Selector="Button.pwText:disabled">
+        <Setter Property="Opacity" Value="0.45" />
+    </Style>
+
+    <Style Selector="Button.pwDanger">
+        <Setter Property="Background" Value="{DynamicResource PwSurfaceBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PwDangerBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PwDangerBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{DynamicResource PwRadiusMediumCorner}" />
+        <Setter Property="MinHeight" Value="{DynamicResource PwControlHeightNormal}" />
+        <Setter Property="Padding" Value="12,0" />
+        <Setter Property="FontFamily" Value="{DynamicResource PwFontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource PwFontSizeBody}" />
+    </Style>
+    <Style Selector="Button.pwDanger:pointerover">
+        <Setter Property="Background" Value="#FDECEC" />
+    </Style>
+    <Style Selector="Button.pwDanger:pressed">
+        <Setter Property="Background" Value="#F8D4D4" />
+    </Style>
+    <Style Selector="Button.pwDanger:focus">
+        <Setter Property="BorderThickness" Value="2" />
+    </Style>
+    <Style Selector="Button.pwDanger:disabled">
+        <Setter Property="Opacity" Value="0.45" />
+    </Style>
+
+    <Style Selector="TextBox.pwField">
+        <Setter Property="Background" Value="{DynamicResource PwSurfaceBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PwTextPrimaryBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PwBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{DynamicResource PwRadiusMediumCorner}" />
+        <Setter Property="MinHeight" Value="{DynamicResource PwControlHeightNormal}" />
+        <Setter Property="Padding" Value="8,0" />
+        <Setter Property="FontFamily" Value="{DynamicResource PwFontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource PwFontSizeBody}" />
+    </Style>
+    <Style Selector="TextBox.pwField:pointerover">
+        <Setter Property="BorderBrush" Value="{DynamicResource PwTextMutedBrush}" />
+    </Style>
+    <Style Selector="TextBox.pwField:focus">
+        <Setter Property="BorderBrush" Value="{DynamicResource PwPrimaryBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+    <Style Selector="TextBox.pwField:disabled">
+        <Setter Property="Opacity" Value="0.55" />
+    </Style>
+
+    <Style Selector="ComboBox.pwField">
+        <Setter Property="Background" Value="{DynamicResource PwSurfaceBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PwTextPrimaryBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PwBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{DynamicResource PwRadiusMediumCorner}" />
+        <Setter Property="MinHeight" Value="{DynamicResource PwControlHeightNormal}" />
+        <Setter Property="Padding" Value="8,0" />
+        <Setter Property="FontFamily" Value="{DynamicResource PwFontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource PwFontSizeBody}" />
+    </Style>
+    <Style Selector="ComboBox.pwField:pointerover">
+        <Setter Property="BorderBrush" Value="{DynamicResource PwTextMutedBrush}" />
+    </Style>
+    <Style Selector="ComboBox.pwField:focus">
+        <Setter Property="BorderBrush" Value="{DynamicResource PwPrimaryBrush}" />
+    </Style>
+    <Style Selector="ComboBox.pwField:disabled">
+        <Setter Property="Opacity" Value="0.55" />
+    </Style>
+
+    <Style Selector="CheckBox.pwField">
+        <Setter Property="Foreground" Value="{DynamicResource PwTextPrimaryBrush}" />
+        <Setter Property="MinHeight" Value="{DynamicResource PwControlHeightNormal}" />
+        <Setter Property="FontFamily" Value="{DynamicResource PwFontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource PwFontSizeBody}" />
+    </Style>
+    <Style Selector="CheckBox.pwField:focus">
+        <Setter Property="Foreground" Value="{DynamicResource PwPrimaryBrush}" />
+    </Style>
+    <Style Selector="CheckBox.pwField:disabled">
+        <Setter Property="Opacity" Value="0.55" />
+    </Style>
+
+    <!-- Lightweight status chips. Apply pwStatus plus one tone class. -->
+    <Style Selector="Border.pwStatus">
+        <Setter Property="Background" Value="{DynamicResource PwSurfaceSecondaryBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PwBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{DynamicResource PwRadiusSmallCorner}" />
+        <Setter Property="Padding" Value="8,2" />
+    </Style>
+    <Style Selector="Border.pwStatusSuccess">
+        <Setter Property="Background" Value="#E8F6F0" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PwSuccessBrush}" />
+    </Style>
+    <Style Selector="Border.pwStatusWarning">
+        <Setter Property="Background" Value="#FDF4E8" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PwWarningBrush}" />
+    </Style>
+    <Style Selector="Border.pwStatusDanger">
+        <Setter Property="Background" Value="#FDECEC" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PwDangerBrush}" />
+    </Style>
+    <Style Selector="Border.pwStatusPending">
+        <Setter Property="Background" Value="{DynamicResource PwPrimarySoftBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PwPrimaryBrush}" />
+    </Style>
+</Styles>
